@@ -1,0 +1,13 @@
+1. In order to install every dependency for an angularJS app type:
+	npm install
+
+2. To run angularJS app type:
+	npm run start-server
+the above mentioned command start a server in http://localhost:3000/app/index.html
+
+If you want to run specific scripts from package.json type:
+
+	npm run <script_name> (scripts available are under scripts key from package.json)
+
+Note that e2e (protractor) needs selenium server up and running for running tests. As such before executing e2e tests type:
+	npm run start-webdriver
