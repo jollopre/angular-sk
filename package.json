@@ -7,6 +7,8 @@
   "license": "",
   "devDependencies": {
     "http-server": "^0.8.0",
+    "bootstrap": "^3.3.5",
+    "angular": "^1.4.5",
     "jasmine-core": "^2.3.4",
     "jasmine-reporters": "^2.0.7",
     "karma": "^0.13.9",
@@ -14,7 +16,6 @@
     "karma-firefox-launcher": "^0.1.6",
     "karma-jasmine": "^0.3.6",
     "karma-junit-reporter": "^0.3.4",
-    "webdriver-manager": "^7.0.1",
     "protractor": "^2.2.0"
   },
   "scripts": {
@@ -23,7 +24,7 @@
     "prestart-server": "npm install",
     "start-server": "http-server -a localhost -p 3000 -c-1",
 
-    "preunit-test": "karma start spec/karma.conf.js",
+    "unit-test": "karma start spec/karma.conf.js",
     "unit-test-single-run": "karma start spec/karma.conf.js  --single-run",
 
     "update-webdriver": "webdriver-manager update",
