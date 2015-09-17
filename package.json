@@ -3,12 +3,15 @@
   "private": true,
   "version": "0.0.1",
   "description": "A skeleton project for AngularJS",
-  "repository": "https://github.com/jollopre/angular-sk.git",
-  "license": "",
-  "devDependencies": {
+  "repository": { "type": "git", "url": "https://github.com/jollopre/angular-sk.git"},
+  "license": "MIT",
+  "author": { "name" : "Jose Lloret", "email": "jollopre@gmail.com" },
+  "dependencies":{
     "http-server": "^0.8.0",
     "bootstrap": "^3.3.5",
-    "angular": "^1.4.5",
+    "angular": "^1.4.5"
+  },
+  "devDependencies": {
     "jasmine-core": "^2.3.4",
     "jasmine-reporters": "^2.0.7",
     "karma": "^0.13.9",
@@ -19,9 +22,6 @@
     "protractor": "^2.2.0"
   },
   "scripts": {
-    "postinstall": "npm run update-webdriver",
-
-    "prestart-server": "npm install",
     "start-server": "http-server -a localhost -p 3000 -c-1",
 
     "unit-test": "karma start spec/karma.conf.js",
@@ -30,6 +30,7 @@
     "update-webdriver": "webdriver-manager update",
     "start-webdriver": "webdriver-manager start",
 
+    "pree2e-test": "npm run update-webdriver",
     "e2e-test": "protractor spec/protractor.conf.js"
   }
 }
