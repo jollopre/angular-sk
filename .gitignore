@@ -1,4 +1,4 @@
 node_modules/
-spec/unit/results/
-spec/e2e/results/
+spec/unit/results/*.xml
+spec/e2e/results/*.xml
 angular-sk.sublime-workspace
