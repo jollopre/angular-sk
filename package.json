@@ -31,7 +31,7 @@
     "update-webdriver": "webdriver-manager update",
     "start-webdriver": "webdriver-manager start",
 
-    "pree2e-test": "(npm run update-webdriver > /dev/null 2>&1)",
+    "pree2e-test": "(npm run update-webdriver > /dev/null 2>&1) && (npm run start-webdriver > /dev/null 2>&1 &) && (sleep 5)",
     "e2e-test": "protractor spec/protractor.conf.js"
   }
 }
