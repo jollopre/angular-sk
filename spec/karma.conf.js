@@ -18,6 +18,7 @@ module.exports = function(config) {
        'node_modules/angular/angular.min.js',
        'node_modules/angular-mocks/angular-mocks.js',
        'app/*.js',
+       'app/partials/*.html',
        'spec/unit/*Spec.js'
     ],
 
@@ -30,8 +31,12 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'app/partials/*.html': 'ng-html2js'
     },
-
+    ngHtml2JsPreprocessor: {
+      // strip this from the file path 
+      stripPrefix: 'app/'
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

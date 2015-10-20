@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 46.0.2490 (Mac OS X 10.10.5)" package="" timestamp="2015-10-20T15:18:17" id="0" hostname="dlib-lloret.edina.ac.uk" tests="2" errors="0" failures="1" time="0.077">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36"/>
+  </properties>
+  <testcase name="should set the default value of name" time="0.038" classname="Chrome_46_0_2490_(Mac_OS_X_10_10_5).myCtrl function"/>
+  <testcase name="Should replace $scope.name with World" time="0.039" classname="Chrome_46_0_2490_(Mac_OS_X_10_10_5).hello-world directive">
+    <failure type="">Error: Unexpected request: GET partials/hello-world.html
+No more request expected
+    at $httpBackend (/Users/jlloret/repositories/angular-sk/node_modules/angular-mocks/angular-mocks.js:1244:9)
+    at p (/Users/jlloret/repositories/angular-sk/node_modules/angular/angular.min.js:89:97)
+    at g (/Users/jlloret/repositories/angular-sk/node_modules/angular/angular.min.js:86:245)
+    at /Users/jlloret/repositories/angular-sk/node_modules/angular/angular.min.js:119:113
+    at n.$eval (/Users/jlloret/repositories/angular-sk/node_modules/angular/angular.min.js:133:221)
+    at n.$digest (/Users/jlloret/repositories/angular-sk/node_modules/angular/angular.min.js:130:233)
+    at Object.&lt;anonymous&gt; (/Users/jlloret/repositories/angular-sk/spec/unit/directiveSpec.js:12:10)
+</failure>
+  </testcase>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

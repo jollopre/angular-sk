@@ -7,13 +7,9 @@
 <script src="../node_modules/angular/angular.min.js"></script>
 <script src="app.js"></script>
 <script src="controller.js"></script>
+<script src="directive.js"></script>
 </head>
 <body ng-app="app">
-	<div class="container" ng-controller="myCtrl as mc">
-		<div class="form-group">
-    		<label for="name">Hello {{name}}!</label>
-    		<input type="text" class="form-control" id="name" placeholder="type here..." ng-model="name"/>
-  		</div>
-	</div>
+	<hello-world></hello-world>
 </body>
 </html> 

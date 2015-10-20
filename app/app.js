@@ -1,3 +1,4 @@
 angular.module('app', [
-	'app.controller'
+	'app.controller',
+	'app.directive'
 ]);
