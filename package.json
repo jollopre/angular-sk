@@ -23,7 +23,7 @@
     "protractor": "^2.2.0"
   },
   "scripts": {
-    "start-server": "http-server -a 127.0.0.1 -p 8080 -c-1",
+    "start-server": "http-server -a 127.0.0.1 -p 3000 -c-1",
 
     "unit-test": "karma start spec/karma.conf.js",
     "unit-test-single-run": "karma start spec/karma.conf.js  --single-run",
