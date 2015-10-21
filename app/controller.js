@@ -1,5 +1,5 @@
 angular.module('app.controller', [])
-	.controller('helloWorldCtrl',['$scope',function($scope){
+	.controller('HelloWorldCtrl',['$scope',function($scope){
 		$scope.name = 'World';
 	}])
 ;
