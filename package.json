@@ -26,8 +26,7 @@
   "scripts": {
     "start-server": "http-server -a 127.0.0.1 -p 8008 -c-1",
 
-    "unit-test": "karma start spec/karma.conf.js",
-    "unit-test-single-run": "karma start spec/karma.conf.js  --single-run",
+    "unit-test": "karma start spec/karma.conf.js  --single-run",
 
     "update-webdriver": "webdriver-manager update",
     "start-webdriver": "webdriver-manager start",
