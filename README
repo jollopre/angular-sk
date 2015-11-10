@@ -1,15 +1,14 @@
-This file explains how to have an angularJS app based on angular-sk up and running. This assumes that you have install node.js in your computer. The following commands must be executed on the root
-folder, i.e. angular-sk where package.json is placed.
+# angular-sk
 
-- In order to install dependencies for an angularJS app type:
-	npm install [--production]	(--production will install dependencies to run an angularJS app ONLY)
+*angular-sk* is a repository containing the minimum dependencies to have an angularJS app up and running. This repository assumes you have installed node.js in your computer.
 
-- To run an angularJS app type:
-	npm run start-server (server listening in  http://localhost:3000/app/index.html). Note this command is not needed if you have already a server hosting this app.
+Following there are a set of useful commands needed to have your angular app ready (type them on the root folder where package.json is placed):
 
-If you want to run specific scripts from package.json type:
-	npm run <script_name> (available scripts are under scripts key from package.json). 
+* npm install [--production]	(--production will install dependencies to run an angularJS app ONLY)
 
-- To run e2e tests (through protractor) selenium server up and running is needed. Please, execute the following commands in this order:
-	npm run start-webdriver
-	npm run e2e-test
+* npm run start-server (server will start listening at  http://localhost:3000/app/index.html). Note this command is not needed if you have already a server hosting this app.
+
+* npm run e2e-test (will start selenium server and after will execute the e2e tests).
+
+If you want to run specific scripts type:
+	npm run <script_name> (available scripts are under scripts key inside of package.json file). 
