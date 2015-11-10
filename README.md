@@ -4,9 +4,9 @@
 
 Following there are a set of useful commands needed to have your angular app ready (type them on the root folder where package.json is placed):
 
-* npm install [--production]	(--production will install dependencies to run an angularJS app ONLY)
+* npm install \[--production\]	\(--production will install dependencies to run an angularJS app ONLY\)
 
-* npm run start-server (server will start listening at  http://localhost:3000/app/index.html). Note this command is not needed if you have already a server hosting this app.
+* npm run start-server \(server will start listening at  http://localhost:3000/app/index.html\). Note this command is not needed if you have already a server hosting this app.
 
 * npm run e2e-test (will start selenium server and after will execute the e2e tests).
 
