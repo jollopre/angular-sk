@@ -1,37 +1,32 @@
 {
   "name": "angular-sk",
-  "private": true,
-  "version": "0.0.1",
-  "description": "A skeleton project for AngularJS",
-  "repository": { "type": "git", "url": "https://github.com/jollopre/angular-sk.git"},
-  "license": "MIT",
-  "author": { "name" : "Jose Lloret", "email": "jollopre@gmail.com" },
-  "dependencies":{
-    "http-server": "^0.8.0",
-    "bootstrap": "^3.3.5",
-    "angular": "^1.4.7"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1.4.7",
-    "jasmine-core": "^2.3.4",
-    "jasmine-reporters": "^2.0.7",
-    "karma": "^0.13.9",
-    "karma-ng-html2js-preprocessor": "^0.2.0",
-    "karma-chrome-launcher": "^0.2.0",
-    "karma-firefox-launcher": "^0.1.6",
-    "karma-jasmine": "^0.3.6",
-    "karma-junit-reporter": "^0.3.4",
-    "protractor": "^2.2.0"
-  },
+  "version": "1.0.0",
+  "description": "Skeleton project for angularJS app",
+  "main": "index.js",
   "scripts": {
-    "start-server": "http-server -a 127.0.0.1 -p 8008 -c-1",
-
-    "unit-test": "karma start spec/karma.conf.js  --single-run",
-
-    "update-webdriver": "webdriver-manager update",
-    "start-webdriver": "webdriver-manager start",
-
-    "pree2e-test": "(npm run update-webdriver > /dev/null 2>&1) && (npm run start-webdriver > /dev/null 2>&1 &) && (sleep 5)",
-    "e2e-test": "protractor spec/protractor.conf.js"
+    "unit-test": "node_modules/gulp/bin/gulp.js unit-test",
+    "gulp": "node_modules/gulp/bin/gulp.js",
+    "http-server": "node_modules/http-server/bin/http-server"
+  },
+  "author": {"name":"Jose Lloret","email":"jollopre@gmail.com"},
+  "license": "ISC",
+  "devDependencies": {
+    "angular-mocks": "^1.5.3",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-html2js": "^0.4.2",
+    "gulp-processhtml": "^1.1.0",
+    "gulp-uglify": "^1.5.3",
+    "http-server": "^0.9.0",
+    "jshint": "^2.9.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.8",
+    "karma-junit-reporter": "^0.4.2",
+    "karma-ng-html2js-preprocessor": "^0.2.2"
+  },
+  "dependencies": {
+    "angular": "^1.5.3"
   }
 }
