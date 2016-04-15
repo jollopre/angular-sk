@@ -1,0 +1,13 @@
+{
+	"eqeqeq": true,
+	"freeze": true,
+	"latedef": true,
+	"maxdepth": 5,
+	"nonew": true,
+	"predef": ["console","require","jasmine","describe","it","beforeEach","afterEach","expect","spyOn","module","inject"],
+	"quotmark": "single",
+	"strict": true,
+	"undef": true,
+	"unused": true,
+	"scripturl": true
+}
