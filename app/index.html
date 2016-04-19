@@ -3,13 +3,25 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>App Title</title>
-		<script src="../node_modules/angular/angular.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 	</head>
 	<body>
-		<hello-world></hello-world>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3">
+					<div ng-controller="tagParentCtrl as tagParentCtrl">
+						<tag tags="tagParentCtrl.tags" selected-tags="tagParentCtrl.selectedTags"></tag>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../node_modules/angular/angular.min.js"></script>
+		<script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
 		<!-- build:js index.js -->
 		<script src="index.js"></script>
 		<script src="js/helloWorld.js"></script>
+		<script src="js/tag.js"></script>
+		<script src="js/asynchronousLoop.js"></script>
 		<!-- /build -->
 	</body>
 </html> 

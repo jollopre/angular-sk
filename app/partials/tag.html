@@ -1,0 +1,32 @@
+<style>
+	.tagging{
+		position: relative;
+	}
+	.tags{
+		float:left;
+	}
+	.tag{
+		background-color: #EEEEEE;
+		border:1px solid #DDDDDD;
+		display: inline-block;
+		padding: 5px;
+		margin-right: 5px;
+	}
+	.tag a{
+		color: #aaaaaa;
+	}
+	.tag-input{
+		display: inline-block;
+	}
+</style>
+<div class="tagging">
+	<div class="tags">
+		<span class="tag" ng-repeat="tag in tagCtrl.selectedTags">
+			<span ng-bind="tag.text"></span>
+			<a href="javascript:void(0);" ng-click="tagCtrl.deleteTag(tag.id);">&times;</a>
+		</span>
+	</div>
+	<div class="tag-input">
+		<input type="text" placeholder="Add new tag" ng-model="tagCtrl.selected" uib-typeahead="value for value in tagCtrl.tags | filter: $viewValue | limitTo: 8" typeahead-on-select="tagCtrl.onSelect($item,$model,$label,$event)">
+	</div>
+</div>
