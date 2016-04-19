@@ -1,8 +1,16 @@
 (function(){
 	'use strict';
 	var gulp = require('gulp');
-	var runSequence = require('run-sequence'); 
+	var fs = require('fs');
+	var runSequence = require('run-sequence');
+	var packageObj;
 
+	gulp.task('packageObj',function(){
+		fs.readFile('package.json','utf8',function(err, data) {
+  			if (err) throw Error('package.json cannot be read');
+  			packageObj = JSON.parse(data);
+		});
+	});
 	gulp.task('html2js',function(){
 		var html2js = require('gulp-html2js');
 		return gulp.src('app/partials/*.html')
