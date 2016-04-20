@@ -6,6 +6,7 @@
 		var $log;
 		var $scope;
 		beforeEach(module('app'));
+		beforeEach(module('partials/helloWorld.html'));
 		beforeEach(inject(function(_$compile_,_$log_,_$rootScope_){
 			$compile = _$compile_;
 			$log = _$log_;
