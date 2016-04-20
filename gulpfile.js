@@ -75,6 +75,14 @@
 			singleRun: true
 		},done).start();
 	});
+	gulp.task('unit-test-phantomJS',function(done){
+		var Server = require('karma').Server;
+		new Server({
+			configFile: __dirname + '/spec/unit/unit.conf.js',
+			singleRun: true,
+			browsers: ['PhantomJS']
+		},done).start();
+	});
 	gulp.task('build',function(cb){
 		runSequence('html2js','concat','uglify',['header','clean','processHtml'],cb);
 	});

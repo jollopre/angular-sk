@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "unit-test": "node_modules/gulp/bin/gulp.js unit-test",
+    "unit-test-phantomJS": "node_modules/gulp/bin/gulp.js unit-test-phantomJS",
     "gulp": "node_modules/gulp/bin/gulp.js",
     "http-server": "node_modules/http-server/bin/http-server"
   },
@@ -31,6 +32,8 @@
     "karma-jasmine": "^0.3.8",
     "karma-junit-reporter": "^0.4.2",
     "karma-ng-html2js-preprocessor": "^0.2.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.7",
     "run-sequence": "^1.1.5"
   },
   "dependencies": {
