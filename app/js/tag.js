@@ -60,8 +60,6 @@
 	 						throw new Error('An array was expected for tags property');
 	 					if(!Array.isArray(this.selectedTags))
 	 						throw new Error('An array was expected for selectedTags property');
-	 					if(this.onAdd !== undefined && typeof this.onAdd !== 'function')
-	 						throw new Error('A function was expected for onAdd property');
 	 				};
 	 			}],
 	 			controllerAs: 'tagCtrl'

@@ -17,12 +17,15 @@ module.exports = function(config) {
     files: [
       'node_modules/angular/angular.min.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
       'app/index.js',
       'app/js/*.js',
+      'app/partials/*.html',
       'spec/unit/*Spec.js'
     ],
-
-
+    ngHtml2JsPreprocessor:{
+        stripPrefix: 'app/'
+    },
     // list of files to exclude
     exclude: [
     ],
@@ -31,6 +34,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'app/partials/*.html': ['ng-html2js']
     },
 
 
@@ -68,7 +72,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome','Firefox'],
+    browsers: ['Chrome','Firefox','PhantomJS'],
 
 
     // Continuous Integration mode
