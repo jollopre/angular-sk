@@ -1,6 +1,7 @@
 <style>
 	.tagging{
 		position: relative;
+		padding: 5px;
 	}
 	.tags{
 		float:left;
@@ -11,12 +12,16 @@
 		display: inline-block;
 		padding: 5px;
 		margin-right: 5px;
+		font-size: 12px;
 	}
 	.tag a{
 		color: #aaaaaa;
 	}
 	.tag-input{
 		display: inline-block;
+	}
+	.tag-input input{
+		height: 29px;
 	}
 </style>
 <div class="tagging">
@@ -26,7 +31,12 @@
 			<a href="javascript:void(0);" ng-click="tagCtrl.deleteTag(tag.id);">&times;</a>
 		</span>
 	</div>
-	<div class="tag-input">
-		<input type="text" placeholder="Add new tag" ng-model="tagCtrl.selected" uib-typeahead="value for value in tagCtrl.tags | filter: $viewValue | limitTo: 8" typeahead-on-select="tagCtrl.onSelect($item,$model,$label,$event)">
+	<div class="tag-input" ng-class="{'has-error': form.selected.$error.minlength || form.selected.$error.maxlength}">
+		<form name="form" novalidate> 
+			<input type="text" placeholder="Add new tag" name="selected" ng-model="tagCtrl.selected" ng-minlength="{{tagCtrl.MIN_CHARACTER}}" ng-maxlength="{{tagCtrl.MAX_CHARACTER}}" uib-typeahead="value for value in tagCtrl.tags | filter: $viewValue | limitTo: 8" ng-keyup="tagCtrl.onKeyUp($event)" typeahead-on-select="tagCtrl.onSelect($item,$model,$label,$event)">
+			<span class="help-block" ng-if="form.selected.$error.minlength || form.selected.$error.maxlength">
+      			Tag value length must be in range <span ng-bind="tagCtrl.MIN_CHARACTER"></span> to <span ng-bind="tagCtrl.MAX_CHARACTER"></span>!
+      		</span>
+		</form>
 	</div>
 </div>

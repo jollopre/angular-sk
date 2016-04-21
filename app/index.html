@@ -10,14 +10,14 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div ng-controller="tagParentCtrl as tagParentCtrl">
-						<tag tags="tagParentCtrl.tags" selected-tags="tagParentCtrl.selectedTags"></tag>
+						<tag tags="tagParentCtrl.tags" selected-tags="tagParentCtrl.selectedTags" on-add="tagParentCtrl.onAdd(tag)"></tag>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script src="../node_modules/angular/angular.min.js"></script>
 		<script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-		<!-- build:js index.js -->
+		<!-- build:js index.min.js -->
 		<script src="index.js"></script>
 		<script src="js/helloWorld.js"></script>
 		<script src="js/tag.js"></script>
