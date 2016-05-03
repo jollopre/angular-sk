@@ -2,7 +2,7 @@
 	'use strict';
 	var angular = window.angular;
 	angular.module('app')
-		.directive('canvasImage',['$log','imageService',function($log,imageService){
+		.directive('canvasImage',['$log','imageService','$timeout',function($log,imageService,$timeout){
 			function CanvasHandler(canvas,imageUrl){
 				var self = this;
 				this.canvas = canvas;
@@ -31,6 +31,13 @@
 						}
 					);
 				};
+				this.isDragging = function(){
+					return self.dragging;
+				};
+				this.setDragging = function(value){
+					if(typeof value === 'boolean')
+						$timeout(function(){self.dragging = value;},0);
+				};
 				this.getContext = function(){
 					return this.canvas.getContext('2d');
 				};
@@ -43,7 +50,7 @@
 					}
 				};
 				this.mouseDown = function(e){
-					self.dragging = true;
+					self.setDragging(true);
 					var offset = self.canvas.getBoundingClientRect();
 					self.canvasX = e.clientX-offset.left-self.distanceX;
 					self.canvasY = e.clientY-offset.top-self.distanceY;
@@ -56,12 +63,19 @@
 						self.distanceY = e.clientY-offset.top-self.canvasY;
 						$log.debug('distanceX at: %o; distanceY at: %o',self.distanceX,self.distanceY);
 						self.clear();
-						self.getContext().drawImage(self.img,self.distanceX,self.distanceY,self.img.width,self.img.height);
+						self.getContext().drawImage(self.img.HTMLImageElement,self.distanceX,self.distanceY,self.img.width,self.img.height);
 					}
 				};
 				this.mouseUp = function(e){
-					self.dragging = false;
+					self.setDragging(false);
 					$log.debug('mouseUp: %o',e);
+				};
+				this.mouseOut = function(e){
+					self.setDragging(false);
+					$log.debug('mouseOut: %o',e);
+				};
+				this.wheel = function(e){
+					$log.debug('wheel.deltaX: %o; wheel.deltaY: %o; wheel.deltaZ: %o',e.deltaX,e.deltaY,e.deltaZ);
 				};
 				this.zoomIn = function(){
 					if(self.zoom < self.MAX_ZOOM){
@@ -97,6 +111,8 @@
 				this.canvas.addEventListener('mousedown',this.mouseDown,false);
 				this.canvas.addEventListener('mousemove',this.mouseMove,false);
 				this.canvas.addEventListener('mouseup',this.mouseUp,false);
+				this.canvas.addEventListener('mouseout',this.mouseOut,false);
+				this.canvas.addEventListener('wheel',this.wheel,false);
 			}
 			return {
 				restrict: 'E',
@@ -109,6 +125,18 @@
 					this.$onInit = function(){
 						$log.debug(self);
 					};
+					/*
+					this.isDragging = function(){
+						return self.dragging;
+					};
+					function loop(){
+						$timeout(function(){
+							self.dragging = ! self.dragging;
+							loop();
+						},2000);
+					}
+					loop();
+					*/
 				}],
 				controllerAs: 'canvasImageCtrl',
 				link: function(scope,elem){
@@ -116,6 +144,7 @@
 					canvasHandler.init();
 					scope.canvasImageCtrl.zoomIn = canvasHandler.zoomIn;
 					scope.canvasImageCtrl.zoomOut = canvasHandler.zoomOut;
+					scope.canvasImageCtrl.isDragging = canvasHandler.isDragging;
 				}
 			};
 		}]); 

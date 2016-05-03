@@ -3,8 +3,12 @@
 		border:1px solid black;
 		margin: 0 auto;
 		display: block;
+		cursor: grab;
+	}
+	.dragging{
+		cursor: grabbing;
 	}
 </style>
-<canvas id="{{canvasImageCtrl.id}}" class="canvas-image" width="600" height="600"></canvas>
+<canvas id="{{canvasImageCtrl.id}}" class="canvas-image" width="600" height="600" ng-class="{'dragging':canvasImageCtrl.isDragging()}"></canvas>
 <button ng-click="canvasImageCtrl.zoomIn()">+</button>
 <button ng-click="canvasImageCtrl.zoomOut()">-</button>
