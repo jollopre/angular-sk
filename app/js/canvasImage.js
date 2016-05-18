@@ -13,7 +13,7 @@
 				this.distanceX = 0;
 				this.distanceY = 0;
 				this.zoom = 0;
-				this.MAX_ZOOM = 10;
+				this.MAX_ZOOM = 5;
 				this.init = function(){
 					imageService.get(
 						imageUrl,
@@ -125,18 +125,6 @@
 					this.$onInit = function(){
 						$log.debug(self);
 					};
-					/*
-					this.isDragging = function(){
-						return self.dragging;
-					};
-					function loop(){
-						$timeout(function(){
-							self.dragging = ! self.dragging;
-							loop();
-						},2000);
-					}
-					loop();
-					*/
 				}],
 				controllerAs: 'canvasImageCtrl',
 				link: function(scope,elem){
