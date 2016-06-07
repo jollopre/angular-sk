@@ -126,12 +126,26 @@
 				templateUrl: 'partials/canvasImage.html',
 				bindToController: true,
 				scope:{src:'<src',height:'<height'},
-				controller: [function(){
+				controller: ['$element',function($element){
 					var self = this;
 					this.id = Date.now();
 					this.canvasHandler = undefined;
+					this.loadImage = function(){
+						imageService.get(
+							this.src,
+							function(data){	//HTMLImageElement as data
+								if(self.canvasHandler){
+									self.canvasHandler.setHtmlImageElement(data);
+									self.canvasHandler.paint();
+								}
+							},
+							function(error){
+								$log.debug(error);
+							}
+						);
+					};
 					this.$onInit = function(){
-						$log.debug(self);
+						$log.debug('canvasImageCtrl.$onInit(): %o',self);
 						if(typeof this.src !== 'string')
 							throw new Error('canvas-image expects a string for src');
 						else if(typeof this.height !== 'number')
@@ -139,56 +153,41 @@
 						else
 							;
 					};
-					this.newCanvasHandler = function(canvas,cWidth,cHeight){
-						if(canvas !== undefined){
-							var canvasHandler = new CanvasHandler(canvas,cWidth,cHeight);
-							this.zoomIn = canvasHandler.zoomIn;
-							this.zoomOut = canvasHandler.zoomOut;
-							this.isDragging = canvasHandler.isDragging;
-							return canvasHandler;
+					this.$onChanges = function(changesObj){
+						//changesObj[propertyName] --> { currentValue, previousValue, isFirstChange() }
+						if(changesObj.src){	
+							var src = changesObj.src;
+							if(!src.isFirstChange()){
+								$log.debug('src changed');
+								this.loadImage();
+							}
 						}
-						return undefined;
+						if(changesObj.height){
+							var height = changesObj.height;
+							if(!height.isFirstChange()){
+								$log.debug('height changed');
+								this.canvasHandler.resize(undefined,height.currentValue);
+							}
+						}
+					};
+					this.$postLink = function(){
+						var canvas = angular.element($element).find('canvas')[0];
+						var canvasWrapper = $element[0].getElementsByClassName('canvas-wrapper')[0];
+						//Initialise canvasHandler after controller elements are linked to the DOM
+						this.canvasHandler = new CanvasHandler(canvas,canvasWrapper.clientWidth,self.height);
+						//Bind controller controls to the canvasHandler
+						this.zoomIn = this.canvasHandler.zoomIn;
+						this.zoomOut = this.canvasHandler.zoomOut;
+						this.isDragging = this.canvasHandler.isDragging;
+						//Bind listener function for resize event
+						angular.element(window).bind('resize',function(){
+							self.canvasHandler.resize(canvasWrapper.clientWidth,self.height);
+						});
+						//Load image asynchronously
+						this.loadImage();
 					};
 				}],
-				controllerAs: 'canvasImageCtrl',
-				link: function(scope,elem){
-					var self = scope.canvasImageCtrl;
-					var canvas = angular.element(elem).find('canvas')[0];
-					var canvasWrapper = elem[0].getElementsByClassName('canvas-wrapper')[0];
-					var canvasHandler = self.newCanvasHandler(canvas,canvasWrapper.clientWidth,self.height);
-
-					function loadImage(src,canvasHandler){
-						imageService.get(
-							src,
-							function(data){	//HTMLImageElement as data
-								canvasHandler.setHtmlImageElement(data);
-								canvasHandler.paint();
-							},
-							function(error){
-								$log.debug(error);
-							}
-						);
-					}
-					scope.$watch(	//$watcher for changes into src
-						function(){return self.src;},
-						function(newVal,oldVal){
-							if(newVal !== oldVal)
-								loadImage(newVal,canvasHandler);
-						}
-					);
-					scope.$watch(	//$watcher for changed into height
-						function(){return self.height;},
-						function(newVal,oldVal){
-							if(newVal !== oldVal)
-								canvasHandler.resize(canvasWrapper.clientWidth,newVal);
-						}
-					);
-					angular.element(window).bind('resize',function(){	//Event Listener for window changes
-						canvasHandler.resize(canvasWrapper.clientWidth,self.height);
-					});
-
-					loadImage(self.src,canvasHandler);
-				}
+				controllerAs: 'canvasImageCtrl'
 			};
 		}]); 
 })(this.window);
